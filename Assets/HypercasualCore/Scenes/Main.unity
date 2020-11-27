@@ -1483,8 +1483,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 60.195312
-        y: 339.39062
+        x: 54.070312
+        y: 328.45312
         width: 100
         height: 32
       isBreakpoint: 0
@@ -1676,7 +1676,7 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 579.7578
+        x: 451.7578
         y: 313.64844
         width: 133
         height: 64
@@ -1793,8 +1793,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 1059.0703
-        y: 226.20312
+        x: 806.0703
+        y: 216.82812
         width: 100
         height: 32
       isBreakpoint: 0
@@ -1905,7 +1905,7 @@ MonoBehaviour:
           floatValue: 0
           intValue: 0
           boolValue: 0
-          stringValue: lose
+          stringValue: win
           vector4Value: {x: 0, y: 0, z: 0, w: 0}
           objectReference: {fileID: 0}
           arrayValue:
@@ -1990,8 +1990,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 1055.3828
-        y: 444.5
+        x: 807.0703
+        y: 392.9375
         width: 109
         height: 32
       isBreakpoint: 0
@@ -2102,7 +2102,7 @@ MonoBehaviour:
           floatValue: 0
           intValue: 0
           boolValue: 0
-          stringValue: win
+          stringValue: lose
           vector4Value: {x: 0, y: 0, z: 0, w: 0}
           objectReference: {fileID: 0}
           arrayValue:
@@ -2187,7 +2187,7 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 582.34375
+        x: 454.34375
         y: 108.94531
         width: 147
         height: 32
@@ -2274,8 +2274,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 885.46094
-        y: 481.85938
+        x: 659.02344
+        y: 436.54688
         width: 119
         height: 32
       isBreakpoint: 0
@@ -2344,8 +2344,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 588.7578
-        y: 548.96094
+        x: 457.6328
+        y: 502.08594
         width: 110
         height: 48
       isBreakpoint: 0
@@ -2422,8 +2422,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 562.58594
-        y: 658.39844
+        x: 425.21094
+        y: 616.21094
         width: 163
         height: 32
       isBreakpoint: 0
@@ -2492,8 +2492,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 226.35156
-        y: 338.84375
+        x: 209.28906
+        y: 332.59375
         width: 113
         height: 32
       isBreakpoint: 0

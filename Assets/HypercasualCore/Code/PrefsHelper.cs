@@ -20,20 +20,17 @@ public static class PrefsHelper
 				result = PlayerPrefs.GetFloat(name, (float)defaultValue);
 				break;
 			case VariableType.String:
-				return PlayerPrefs.GetString(name, (string)defaultValue);
+				result = PlayerPrefs.GetString(name, (string)defaultValue);
 				break;
 			case VariableType.Bool:
 				result = PlayerPrefs.GetInt(name, (bool)defaultValue ? 1 : 0) == 1;
 				break;
 		}
-		
-		Debug.Log($"[TEST] PrefsHelper.Get( '{name}' , {defaultValue} ) -> {result}");
 		return result;
 	}
 	
 	public static void Set(VariableType type, string name, object value)
 	{
-		Debug.Log($"[TEST] PrefsHelper.Set( '{name}' , {value} )");
 		switch (type)
 		{
 			case VariableType.Int:

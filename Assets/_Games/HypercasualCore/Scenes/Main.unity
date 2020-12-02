@@ -1582,8 +1582,8 @@ MonoBehaviour:
       colorIndex: 5
       position:
         serializedVersion: 2
-        x: 54.070312
-        y: 296.45312
+        x: 56.703125
+        y: 341.8203
         width: 100
         height: 32
       isBreakpoint: 0
@@ -1800,8 +1800,8 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 451.7578
-        y: 281.64844
+        x: 453.1875
+        y: 322.5078
         width: 133
         height: 64
       isBreakpoint: 0
@@ -1963,8 +1963,8 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 806.0703
-        y: 184.82812
+        x: 815.8281
+        y: 231.60938
         width: 100
         height: 32
       isBreakpoint: 0
@@ -2161,7 +2161,7 @@ MonoBehaviour:
       position:
         serializedVersion: 2
         x: 807.0703
-        y: 360.9375
+        y: 438.20312
         width: 109
         height: 32
       isBreakpoint: 0
@@ -2357,8 +2357,8 @@ MonoBehaviour:
       colorIndex: 7
       position:
         serializedVersion: 2
-        x: 487.15625
-        y: 111.32031
+        x: 448.1328
+        y: 105.66406
         width: 147
         height: 32
       isBreakpoint: 0
@@ -2444,8 +2444,8 @@ MonoBehaviour:
       colorIndex: 7
       position:
         serializedVersion: 2
-        x: 659.02344
-        y: 404.54688
+        x: 802.9297
+        y: 504.98438
         width: 119
         height: 32
       isBreakpoint: 0
@@ -2515,7 +2515,7 @@ MonoBehaviour:
       position:
         serializedVersion: 2
         x: 457.6328
-        y: 470.08594
+        y: 518.08594
         width: 110
         height: 48
       isBreakpoint: 0
@@ -2534,7 +2534,7 @@ MonoBehaviour:
           name: RESTART
           isSystemEvent: 0
           isGlobal: 0
-        toState: SwitchToMain_Restart
+        toState: Restart
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -2679,14 +2679,14 @@ MonoBehaviour:
         - sendEvent
         paramDataPos: 0000000000000000000000000000000000000000010000000100000001000000
         paramByteDataSize: 0000000001000000000000000000000000000000000000000000000000000000
-    - name: SwitchToMain_Restart
+    - name: Restart
       description: 
       colorIndex: 7
       position:
         serializedVersion: 2
-        x: 425.21094
-        y: 584.21094
-        width: 163
+        x: 464.01562
+        y: 589.91406
+        width: 100
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -2754,8 +2754,8 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 209.28906
-        y: 300.59375
+        x: 215.86719
+        y: 339.3828
         width: 113
         height: 32
       isBreakpoint: 0
@@ -2862,8 +2862,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 262.5
-        y: 168
+        x: 450.3047
+        y: 167.21875
         width: 142
         height: 32
       isBreakpoint: 0

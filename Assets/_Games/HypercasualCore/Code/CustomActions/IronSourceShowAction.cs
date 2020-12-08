@@ -26,6 +26,13 @@ namespace ISelf.PlayMaker.Actions
 			IronSourceEvents.onInterstitialAdShowSucceededEvent += HandleShowSuccess;
 			IronSourceEvents.onInterstitialAdShowFailedEvent += HandleShowFail;
 			
+			if (Application.isEditor)
+			{
+				Debug.Log("[TEST] IronSourceShowAction skip by editor! Send event: "+notReadyEvent.Name);
+				Event(notReadyEvent);
+				Finish();
+				return;
+			}
 			if (IronSource.Agent.isInterstitialReady())
 			{
 				Debug.Log($"[TEST] Show interstitial {placement.Value}");

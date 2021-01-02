@@ -11,4 +11,12 @@ public static class HierarchyUtils
         else
             GameObject.DestroyImmediate(obj);
     }
+    
+    public static void SafeDestroy(GameObject obj, float delay)
+    {
+        if (Application.isPlaying)
+            GameObject.Destroy(obj, delay);
+        else
+            GameObject.DestroyImmediate(obj);
+    }
 }

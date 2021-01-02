@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum LevelOverflow
 {
+	Clamp,
 	Loop,
 	Random
 }
@@ -23,8 +24,14 @@ public class LevelSelector : MonoBehaviour
 		{
 			case LevelOverflow.Loop:
 				return levels[index % levels.Length];
+				
 			case LevelOverflow.Random:
 				return RandomUtils.Choice(levels);
+				
+			case LevelOverflow.Clamp:
+			default:
+				return levels[Mathf.Min(levels.Length-1, index)];
 		}
+		
 	}
 }

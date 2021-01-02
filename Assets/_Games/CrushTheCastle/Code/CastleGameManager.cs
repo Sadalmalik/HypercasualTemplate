@@ -9,10 +9,15 @@ public class CastleGameManager : IGameManager
 {
 #region Regular unity stuff
 
+	public float levelChangeDuration;
+	[Space]
 	public LevelSelector levels;
-
-	public Level currentLevel;
-
+	private Level _currentPrefab;
+	private Level _currentLevel;
+	[Space]
+	public Player[] skins;
+	private Player player;
+	
 	[Space]
 	public GameObject inGameUI;
 
@@ -28,42 +33,20 @@ public class CastleGameManager : IGameManager
 	public Bomb bomb;
 
 	[Space(40)]
-	public float radius;
-
-	public float duration;
-
+	public float testRadius;
 	public bool applyRadius;
-
-	private float _radius;
-
-	void Start()
-	{
-		_radius = radius;
-		pooledRingBuilder.Rebuild(_radius);
-		tankController.SetRadius(_radius, pooledRingBuilder.steps);
-	}
 
 	void Update()
 	{
 		if (touchWidget.control)
 		{
-			tankController.Move(-touchWidget.values);
+			player.Move(-touchWidget.values);
 		}
 
 		if (applyRadius)
 		{
 			applyRadius = false;
-
-			DOTween.To(
-					() => _radius,
-					rad =>
-					{
-						_radius = rad;
-						pooledRingBuilder.Rebuild(_radius);
-						tankController.SetRadius(_radius, pooledRingBuilder.steps);
-					}, radius, duration
-				);
-				
+			player.DORadius(testRadius, levelChangeDuration);
 		}
 	}
 
@@ -73,25 +56,46 @@ public class CastleGameManager : IGameManager
 
 	public override void Init()
 	{
-		EventTrigger.Entry entry;
 		Debug.Log("[TEST] GameManager.Init()");
 		inGameUI.SetActive(false);
 
 		touchWidget.OnStartControl += HandleStartControl;
 		touchWidget.OnEndControl   += HandleEndControl;
+		
+		player = Instantiate(skins[0]);
 	}
 
 	public override void LoadLevel(int index)
 	{
-		if (currentLevel != null)
-			HierarchyUtils.SafeDestroy(currentLevel.gameObject);
-		currentLevel = Instantiate(levels[index % levels.Length]);
 		Debug.Log("[TEST] GameManager.LoadLevel()");
+		_currentPrefab = levels.GetLevel(index);
+		LoadLevel(_currentPrefab);
 	}
-
+	
 	public override void ResetLevel()
 	{
 		Debug.Log("[TEST] GameManager.ResetLevel()");
+		LoadLevel(_currentPrefab);
+	}
+	
+	private void LoadLevel(Level prefab)
+	{
+		if (_currentLevel != null)
+		{
+			var closure = _currentLevel;
+			closure.DOMove(-Vector3.up * closure.radius, levelChangeDuration).OnComplete(()=>
+			{
+				HierarchyUtils.SafeDestroy(closure.gameObject, 0.1f);
+			});
+		}
+		
+		_currentLevel = Instantiate(
+			prefab,
+			Vector3.up * prefab.radius,
+			Quaternion.identity,
+			transform);
+		_currentLevel.DOMove(Vector3.zero, levelChangeDuration);
+		player.DORadius(prefab.radius, levelChangeDuration);
 	}
 
 	public override void StartLevel()

@@ -7,7 +7,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     public float radius;
-    public float cannonballSpeed;
+    public float cannonBallStartVelocity;
     
     public void OnDrawGizmos()
     {
@@ -17,10 +17,8 @@ public class Level : MonoBehaviour
         Handles.color = temp;
     }
     
-    public Tween DoHeight(float yPosition, float duration)
+    public Tween DOMove(Vector3 position, float duration)
     {
-        var newPos = transform.position;
-        newPos.y = yPosition;
-        return transform.DOMove(newPos, duration);
+        return transform.DOMove(position, duration);
     }
 }

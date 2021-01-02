@@ -9,9 +9,10 @@ public class CastleGameManager : IGameManager
 {
 #region Regular unity stuff
 
-	public float levelChangeDuration;
+	public float levelChangeDuration = 1;
 	[Space]
 	public LevelSelector levels;
+	public float levelSpawnHeight = 2;
 	private Level _currentPrefab;
 	private Level _currentLevel;
 	[Space]
@@ -19,23 +20,21 @@ public class CastleGameManager : IGameManager
 	private Player player;
 	
 	[Space]
-	public GameObject inGameUI;
-
-	public Transform shootAnchor;
-	public Transform cameraAnchor;
-
-	[Space]
+	public CameraController camera;
 	public TouchInputWidget touchWidget;
-
-	public PooledRingBuilder pooledRingBuilder;
-	public TankController tankController;
-	public Cannon cannon;
-	public Bomb bomb;
+	public Bomb regularBombPrefab;
+	public Bomb powerBombPrefab;
+	
+	[Space]
+	public GameObject inGameUI;
 
 	[Space(40)]
 	public float testRadius;
 	public bool applyRadius;
 
+	private ObjectsPool<Bomb> regularBombs;
+	private ObjectsPool<Bomb> powerBombs;
+	
 	void Update()
 	{
 		if (touchWidget.control)
@@ -62,7 +61,22 @@ public class CastleGameManager : IGameManager
 		touchWidget.OnStartControl += HandleStartControl;
 		touchWidget.OnEndControl   += HandleEndControl;
 		
+		regularBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
+		{
+			var bomb = Instantiate(regularBombPrefab);
+			bomb.OnExplode += ()=> regularBombs.Free(bomb);
+			return bomb;
+		});
+		
+		powerBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
+		{
+			var bomb = Instantiate(powerBombPrefab);
+			bomb.OnExplode += ()=> powerBombs.Free(bomb);
+			return bomb;
+		});
+		
 		player = Instantiate(skins[0]);
+		camera.moveTarget = player.cameraAnchor;
 	}
 
 	public override void LoadLevel(int index)
@@ -83,7 +97,7 @@ public class CastleGameManager : IGameManager
 		if (_currentLevel != null)
 		{
 			var closure = _currentLevel;
-			closure.DOMove(-Vector3.up * closure.radius, levelChangeDuration).OnComplete(()=>
+			closure.DOMove(-levelSpawnHeight * Vector3.up * closure.radius, levelChangeDuration).OnComplete(()=>
 			{
 				HierarchyUtils.SafeDestroy(closure.gameObject, 0.1f);
 			});
@@ -91,10 +105,11 @@ public class CastleGameManager : IGameManager
 		
 		_currentLevel = Instantiate(
 			prefab,
-			Vector3.up * prefab.radius,
+			levelSpawnHeight * Vector3.up * prefab.radius,
 			Quaternion.identity,
 			transform);
 		_currentLevel.DOMove(Vector3.zero, levelChangeDuration);
+		player.SetShootVelocity(_currentLevel.cannonBallStartVelocity);
 		player.DORadius(prefab.radius, levelChangeDuration);
 	}
 
@@ -118,8 +133,8 @@ public class CastleGameManager : IGameManager
 	private void HandleEndControl()
 	{
 		Debug.Log("[TEST] HandleEndControl");
-		bomb.Shoot();
-		cannon.Shoot(bomb.body);
+		var bomb = regularBombs.Lock();
+		player.Shoot(bomb);
 	}
 
 #endregion

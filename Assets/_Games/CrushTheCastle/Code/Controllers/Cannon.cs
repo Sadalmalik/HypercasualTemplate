@@ -29,6 +29,7 @@ public class Cannon : MonoBehaviour
 	{
 		cannonball.position = ancor.position;
 		cannonball.velocity = ancor.forward * startVelocity;
+		cannonball.angularVelocity = Random.insideUnitSphere * 10;
 	}
 	
 	private void RebuildTrajectory()

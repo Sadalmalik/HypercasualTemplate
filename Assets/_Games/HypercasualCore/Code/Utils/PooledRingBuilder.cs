@@ -13,11 +13,10 @@ public class PooledRingBuilder : MonoBehaviour
 	public float radius;
 	public int steps;
 
-	private List<Transform> _nodes;
+	private readonly List<Transform> _nodes = new List<Transform>();
 
 	void Awake()
 	{
-		_nodes = new List<Transform>();
 		_pool = ObjectsPoolUtils.CreateTransformsPool(() => Instantiate(prefab, transform));
 	}
 

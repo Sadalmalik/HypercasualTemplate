@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 	public TankController tankController;
 	public Cannon cannon;
 	[Space]
+	public Transform cameraAnchor;
+	[Space]
 	public float radius = 30;
 
 	// [Space]
@@ -18,14 +20,12 @@ public class Player : MonoBehaviour
 	// public ObjectsPool<Bomb> regularBombs;
 	// public ObjectsPool<Bomb> powerBombs;
 
-	void Awake()
+	// void Awake()
+	// {
+	// }
+	
+	void Start()
 	{
-		pooledRingBuilder.Rebuild(radius);
-		tankController.SetRadius(radius, pooledRingBuilder.steps);
-		
-		// regularBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>Instantiate(regularBombPrefab));
-		// powerBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>Instantiate(powerBombPrefab));
-		
 		RadiusSetter(radius);
 	}
 	
@@ -50,7 +50,12 @@ public class Player : MonoBehaviour
     
     public void Shoot(Bomb bomb)
     {
-		bomb.Shoot();
 		cannon.Shoot(bomb.body);
+		bomb.Shoot();
+    }
+    
+    public void SetShootVelocity(float velocity)
+    {
+	    cannon.startVelocity = velocity;
     }
 }

@@ -21,11 +21,21 @@ public static class ObjectsPoolUtils
 			transform => transform.gameObject.SetActive(false)
 		);
 	}
+	
 	public static ObjectsPool<T> CreateBehavioursPool<T>(Func<T> factory = null) where T : MonoBehaviour
 	{
 		return new ObjectsPool<T>(factory,
 			transform => transform.gameObject.SetActive(true),
 			transform => transform.gameObject.SetActive(false)
+		);
+	}
+	
+	public static ObjectsPool<T> CreateBehavioursPool<T>(T prefab) where T : MonoBehaviour
+	{
+		return new ObjectsPool<T>(
+			() => Object.Instantiate(prefab),
+			behaviour => behaviour.gameObject.SetActive(true),
+			behaviour => behaviour.gameObject.SetActive(false)
 		);
 	}
 }

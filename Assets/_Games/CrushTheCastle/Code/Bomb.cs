@@ -17,13 +17,24 @@ public class DamageRange
 public class Bomb : MonoBehaviour
 {
 	public Rigidbody body;
+	public float lifetimeLimit = 5;
 	public DamageRange[] damages;
+	
+	public event Action OnExplode;
+	
+	private float _endTime;
 
 	public void OnDrawGizmos()
 	{
 		var pos = transform.position;
 		foreach (var damage in damages)
 			Gizmos.DrawWireSphere(pos, damage.radius);
+	}
+
+	public void Update()
+	{
+		if (_endTime<Time.time)
+			Explode();
 	}
 
 	public void Explode()
@@ -47,11 +58,13 @@ public class Bomb : MonoBehaviour
 		}
 		
 		gameObject.SetActive(false);
+		OnExplode?.Invoke();
 	}
 	
 	public void Shoot()
 	{
 		gameObject.SetActive(true);
+		_endTime = Time.time + lifetimeLimit;
 	}
 
 	void OnCollisionEnter(Collision collision)

@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4500971375480402039}
+  lifetimeLimit: 3.5
   damages:
   - tag: Hard Damage
     radius: 3

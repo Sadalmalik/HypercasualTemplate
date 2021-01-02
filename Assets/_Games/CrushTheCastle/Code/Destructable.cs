@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Destructable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public int HitPoints = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void Hit(int damage)
+	{
+		HitPoints -= damage;
+		if (HitPoints <= 0)
+			Destroy(gameObject);
+	}
 }

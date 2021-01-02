@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Games/HypercasualCore/Scenes/Main.unity
+    path: Assets/_Games/HypercasualCore/Scenes/Template.unity
     guid: 5e9af2102ac288b4cb8fb3048f1281be
   m_configObjects: {}

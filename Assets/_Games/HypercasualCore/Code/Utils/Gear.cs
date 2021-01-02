@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+// ReSharper disable UnassignedField.Global
+// ReSharper disable MemberCanBePrivate.Global
 
 [ExecuteAlways]
 public class Gear : MonoBehaviour
@@ -10,13 +11,14 @@ public class Gear : MonoBehaviour
     public Axis toAxis;
     public float fromRadius;
     public float toRadius;
+    public float angleOffset;
     
     void Update()
     {
         if (target!=null)
         {
            var axis = target.GetAxis(fromAxis);
-           transform.SetAxis(toAxis, -axis * fromRadius / toRadius);
+           transform.SetAxis(toAxis, angleOffset - axis * fromRadius / toRadius);
         }
     }
 }

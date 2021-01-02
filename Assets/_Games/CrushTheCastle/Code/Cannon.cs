@@ -10,9 +10,6 @@ public class Cannon : MonoBehaviour
 	public float timeOffset;
 	public float timeStep;
 	public float startVelocity;
-	[Space]
-	public Rigidbody cannonball;
-	public bool shoot;
 
 	private List<Transform> _markers;
 
@@ -20,23 +17,15 @@ public class Cannon : MonoBehaviour
 	{
 		_markers = new List<Transform>();
 		for (int i = 0; i < markersCount; i++)
-		{
 			_markers.Add(Instantiate(markerPrefab, ancor));
-		}
 	}
 
 	void Update()
 	{
 		RebuildTrajectory();
-		
-		if (shoot)
-		{
-			shoot = false;
-			Shoot();
-		}
 	}
 	
-	private void Shoot()
+	public void Shoot(Rigidbody cannonball)
 	{
 		cannonball.position = ancor.position;
 		cannonball.velocity = ancor.forward * startVelocity;

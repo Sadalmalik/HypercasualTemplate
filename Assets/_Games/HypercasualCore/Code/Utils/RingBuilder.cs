@@ -1,29 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+// ReSharper disable UnassignedField.Global
+// ReSharper disable MemberCanBePrivate.Global
 
 [ExecuteInEditMode]
 public class RingBuilder : MonoBehaviour
 {
 	public Transform prefab;
-	public float width;
+	public float segmentWidth;
+	public float segmentAngle;
 	public float radius;
-	public float baseAngle;
-
+	public int steps;
 	[Space]
 	public bool rebuild;
-
 	public bool loop;
 	public bool clear;
 
-	void Update()
+	public void Update()
 	{
-		if (rebuild)
+		if(rebuild)
 		{
 			rebuild = loop;
 			Rebuild();
 		}
-
+		
 		if (clear)
 		{
 			clear = false;
@@ -31,12 +31,19 @@ public class RingBuilder : MonoBehaviour
 		}
 	}
 
+	public void Rebuild(float radius)
+	{
+		this.radius = radius;
+		Rebuild();
+	}
+	
 	public void Rebuild()
 	{
-		transform.DestroyChilds();
-
 		var len   = 2 * Mathf.PI * radius;
-		var steps = Mathf.FloorToInt(len / width);
+		steps = Mathf.FloorToInt(len / segmentWidth);
+
+		transform.DestroyChilds();
+		
 		for (int i = 0; i < steps; i++)
 		{
 			var angle = 360f * i / steps;
@@ -45,7 +52,7 @@ public class RingBuilder : MonoBehaviour
 					radius * Mathf.Cos(Mathf.Deg2Rad * angle), 0,
 					radius * Mathf.Sin(Mathf.Deg2Rad * angle)
 				);
-			item.localRotation = Quaternion.Euler(0, -angle + baseAngle, 0);
+			item.localRotation = Quaternion.Euler(0, -angle + segmentAngle, 0);
 		}
 	}
 }

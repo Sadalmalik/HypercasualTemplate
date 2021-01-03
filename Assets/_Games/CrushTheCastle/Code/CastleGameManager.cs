@@ -156,9 +156,16 @@ public class CastleGameManager : IGameManager
 			levelSpawnHeight * Vector3.up * prefab.radius,
 			Quaternion.identity,
 			transform);
+		_currentLevel.OnDestruct += HandleLevelSuccess;
 		_currentLevel.DOMove(Vector3.zero, levelChangeDuration);
 		player.SetShootVelocity(_currentLevel.cannonBallStartVelocity);
+		
 		player.DORadius(prefab.radius, levelChangeDuration);
+	}
+	
+	private void HandleLevelSuccess()
+	{
+		Win();
 	}
 
 	public override void StartLevel()

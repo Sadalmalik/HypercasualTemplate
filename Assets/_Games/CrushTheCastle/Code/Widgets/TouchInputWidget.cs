@@ -15,6 +15,7 @@ public class TouchInputWidget : MonoBehaviour
 	public float fadeDuration = 0.3f;
 
 	public float maxRadius = 200;
+	public float sensitivity = 10;
 
 	public bool control;
 	public Vector2 values;
@@ -92,5 +93,6 @@ public class TouchInputWidget : MonoBehaviour
 
 			values /= maxRadius;
 		}
+		values *= sensitivity;
 	}
 }

@@ -12,17 +12,17 @@ public class CameraController : MonoBehaviour
     [Range(0f,20f)]
     public float moveDamping;
     
-    void Update()
+    void FixedUpdate()
     {
         if (lookTarget!=null)
         {
             var lookat = Quaternion.LookRotation(lookTarget.position - transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookat, MathUtils.Damper(lookDamping));
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookat, MathUtils.ExpDamper(lookDamping, 0.25f));
         }
         
         if (moveTarget!=null)
         {
-            transform.position = Vector3.Lerp(transform.position, moveTarget.position, MathUtils.Damper(moveDamping));
+            transform.position = Vector3.Lerp(transform.position, moveTarget.position, MathUtils.ExpDamper(moveDamping, 0.25f));
         }
     }
 }

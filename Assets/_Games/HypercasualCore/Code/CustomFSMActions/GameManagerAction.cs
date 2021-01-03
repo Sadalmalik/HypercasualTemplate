@@ -9,39 +9,41 @@ namespace ISelf.PlayMaker.Actions
 		LoadLevel,
 		ResetLevel,
 		StartLevel,
-		PauseLevel
+		PauseLevel,
+		ListenEvents
 	}
-	
+
 	[ActionCategory("Custom")]
 	[HutongGames.PlayMaker.Tooltip("Control game")]
 	public class GameManagerAction : FsmStateAction
 	{
 		public GameActionType action;
+
 		[Space]
 		public FsmInt setLevel;
+
 		[Space]
 		public FsmBool setPause;
-		[Space]
-		public bool listenEvents;
+
 		public FsmEvent onWinLevel;
 		public FsmEvent onLooseLevel;
 
 		public override void OnEnter()
 		{
-			if (listenEvents)
+			if (action == GameActionType.ListenEvents)
 			{
 				GameContainer.instance.gameManager.OnWinLevel   += HandleWin;
 				GameContainer.instance.gameManager.OnLooseLevel += HandleLoose;
 			}
-			
+
 			HandleAction();
-			
+
 			Finish();
 		}
 
 		public override void OnExit()
 		{
-			if (listenEvents)
+			if (action == GameActionType.ListenEvents)
 			{
 				GameContainer.instance.gameManager.OnWinLevel   -= HandleWin;
 				GameContainer.instance.gameManager.OnLooseLevel -= HandleLoose;
@@ -50,7 +52,7 @@ namespace ISelf.PlayMaker.Actions
 
 		private void HandleWin() => Fsm.Event(onWinLevel);
 		private void HandleLoose() => Fsm.Event(onLooseLevel);
-		
+
 		private void HandleAction()
 		{
 			switch (action)
@@ -71,7 +73,6 @@ namespace ISelf.PlayMaker.Actions
 					GameContainer.instance.gameManager.PauseLevel(setPause.Value);
 					break;
 			}
-	        
 		}
 	}
 }

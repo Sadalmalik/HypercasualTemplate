@@ -26,28 +26,28 @@ public class ExampleGameManager : IGameManager
 
 #region GameManager Api
 
-	public void Init()
+	public override void Init()
     {
 		winButton.onClick.AddListener(Win);
 		looseButton.onClick.AddListener(Loose);
     }
 	
-    public void LoadLevel(int index)
+    public override void LoadLevel(int index)
     {
 		gameplayUI.SetActive(false);
     }
 
-    public void ResetLevel()
+    public override void ResetLevel()
     {
 		gameplayUI.SetActive(false);
     }
 
-    public void StartLevel()
+    public override void StartLevel()
     {
 		gameplayUI.SetActive(true);
     }
 
-    public void PauseLevel(bool pause)
+    public override void PauseLevel(bool pause)
     {
 		gameplayUI.SetActive(!pause);
     }

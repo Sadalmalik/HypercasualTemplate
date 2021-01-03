@@ -12,11 +12,6 @@ public class TankController : MonoBehaviour
     public float moveSpeed;
     public float radius;
     
-    void Update()
-    {
-        
-    }
-    
     public void SetRadius(float radius, int gearSteps)
     {
         this.radius = radius;
@@ -32,13 +27,7 @@ public class TankController : MonoBehaviour
     
     public void Move(Vector2 amount)
     {
-        Debug.Log($"TankController.Move( {amount} )");
         body.Move(amount.x);
         cannon.Move(amount.y);
-    }
-    
-    public void Shoot()
-    {
-        Debug.Log("TankController.Shoot( )");
     }
 }

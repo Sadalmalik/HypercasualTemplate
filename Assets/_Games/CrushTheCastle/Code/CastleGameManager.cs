@@ -20,7 +20,7 @@ public class CastleGameManager : IGameManager
 	private Player player;
 	
 	[Space]
-	public CameraController camera;
+	public CameraController cameraController;
 	public TouchInputWidget touchWidget;
 	public Bomb regularBombPrefab;
 	public Bomb powerBombPrefab;
@@ -35,11 +35,11 @@ public class CastleGameManager : IGameManager
 	private ObjectsPool<Bomb> regularBombs;
 	private ObjectsPool<Bomb> powerBombs;
 	
-	void Update()
+	void FixedUpdate()
 	{
 		if (touchWidget.control)
 		{
-			player.Move(-touchWidget.values);
+			player.Move(-touchWidget.values * Time.fixedDeltaTime);
 		}
 
 		if (applyRadius)
@@ -64,19 +64,19 @@ public class CastleGameManager : IGameManager
 		regularBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(regularBombPrefab);
-			bomb.OnExplode += ()=> regularBombs.Free(bomb);
+			bomb.OnExplode += () => regularBombs.Free(bomb);
 			return bomb;
 		});
 		
 		powerBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(powerBombPrefab);
-			bomb.OnExplode += ()=> powerBombs.Free(bomb);
+			bomb.OnExplode += () => powerBombs.Free(bomb);
 			return bomb;
 		});
 		
 		player = Instantiate(skins[0]);
-		camera.moveTarget = player.cameraAnchor;
+		cameraController.moveTarget = player.cameraAnchor;
 	}
 
 	public override void LoadLevel(int index)

@@ -22,6 +22,7 @@ public class Bomb : MonoBehaviour
 	
 	public event Action OnExplode;
 	
+	private bool _timer;
 	private float _endTime;
 
 	public void OnDrawGizmos()
@@ -33,12 +34,14 @@ public class Bomb : MonoBehaviour
 
 	public void Update()
 	{
-		if (_endTime<Time.time)
+		if (_timer && _endTime<Time.time)
 			Explode();
 	}
 
 	public void Explode()
 	{
+		_timer = false;
+		
 		var hitted = new HashSet<Destructable>();
 		var pos = transform.position;
 		
@@ -58,6 +61,7 @@ public class Bomb : MonoBehaviour
 		}
 		
 		gameObject.SetActive(false);
+		
 		OnExplode?.Invoke();
 	}
 	
@@ -65,6 +69,7 @@ public class Bomb : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		_endTime = Time.time + lifetimeLimit;
+		_timer = true;
 	}
 
 	void OnCollisionEnter(Collision collision)

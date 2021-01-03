@@ -24,6 +24,7 @@ public class CastleGameManager : IGameManager
 	public TouchInputWidget touchWidget;
 	public Bomb regularBombPrefab;
 	public Bomb powerBombPrefab;
+	public ExplosionController explosionPrefab;
 	
 	[Space]
 	public GameObject inGameUI;
@@ -34,12 +35,13 @@ public class CastleGameManager : IGameManager
 
 	private ObjectsPool<Bomb> regularBombs;
 	private ObjectsPool<Bomb> powerBombs;
+	private ObjectsPool<ExplosionController> explosions;
 	
 	void FixedUpdate()
 	{
 		if (touchWidget.control)
 		{
-			player.Move(-touchWidget.values * Time.fixedDeltaTime);
+			player.Move(-touchWidget.values);
 		}
 
 		if (applyRadius)
@@ -61,19 +63,36 @@ public class CastleGameManager : IGameManager
 		touchWidget.OnStartControl += HandleStartControl;
 		touchWidget.OnEndControl   += HandleEndControl;
 		
+		explosions = ObjectsPoolUtils.CreateBehavioursPool(()=>
+		{
+			var explosion = Instantiate(explosionPrefab);
+			explosion.OnComplete += () => explosions.Free(explosion);
+			return explosion;
+		}, false);
+		
 		regularBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(regularBombPrefab);
-			bomb.OnExplode += () => regularBombs.Free(bomb);
+			bomb.OnExplode += () =>
+			{
+				var explosion = explosions.Lock();
+				explosion.Explode(bomb.transform.position);
+				regularBombs.Free(bomb);
+			};
 			return bomb;
-		});
+		}, false);
 		
 		powerBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(powerBombPrefab);
-			bomb.OnExplode += () => powerBombs.Free(bomb);
+			bomb.OnExplode += () =>
+			{
+				var explosion = explosions.Lock();
+				explosion.Explode(bomb.transform.position);
+				powerBombs.Free(bomb);
+			};
 			return bomb;
-		});
+		}, false);
 		
 		player = Instantiate(skins[0]);
 		cameraController.moveTarget = player.cameraAnchor;
@@ -127,12 +146,10 @@ public class CastleGameManager : IGameManager
 
 	private void HandleStartControl()
 	{
-		Debug.Log("[TEST] HandleStartControl");
 	}
 
 	private void HandleEndControl()
 	{
-		Debug.Log("[TEST] HandleEndControl");
 		var bomb = regularBombs.Lock();
 		player.Shoot(bomb);
 	}

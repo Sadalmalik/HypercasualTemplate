@@ -27,7 +27,7 @@ public class Cannon : MonoBehaviour
 	
 	public void Shoot(Rigidbody cannonball)
 	{
-		cannonball.position = ancor.position;
+		cannonball.transform.position = ancor.position;
 		cannonball.velocity = ancor.forward * startVelocity;
 		cannonball.angularVelocity = Random.insideUnitSphere * 10;
 	}

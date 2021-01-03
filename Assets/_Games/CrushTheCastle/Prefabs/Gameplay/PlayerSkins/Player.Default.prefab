@@ -211,7 +211,7 @@ MonoBehaviour:
   tankController: {fileID: 6240648919934156580}
   cannon: {fileID: 6240648918514523270}
   cameraAnchor: {fileID: 6240648919270167322}
-  radius: 25
+  radius: 10
 --- !u!1 &6240648919270167323
 GameObject:
   m_ObjectHideFlags: 0

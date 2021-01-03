@@ -1298,6 +1298,10 @@ MonoBehaviour:
     type: 3}
   explosionPrefab: {fileID: 3187273859005357974, guid: 13f9a09d65494914cbabe69ebf32b90b,
     type: 3}
+  audioSourcePrefab: {fileID: 1842365063980558915, guid: f7f9fcf5fc1352e41adce1704852ce46,
+    type: 3}
+  explosionSounds:
+  - {fileID: 8300000, guid: 24a44074f2fd98c4cafb5cd2c1e80689, type: 3}
   inGameUI: {fileID: 2116059490}
   testRadius: 15
   applyRadius: 0
@@ -1898,7 +1902,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 010101010101
-        actionIsOpen: 010101010101
+        actionIsOpen: 010100010101
         actionStartIndex: 00000000020000000600000016000000180000001a000000
         actionHashCodes: 787cae0497cbb1002e0b27055e52a6012aa8e00581e77704
         unityObjectParams: []

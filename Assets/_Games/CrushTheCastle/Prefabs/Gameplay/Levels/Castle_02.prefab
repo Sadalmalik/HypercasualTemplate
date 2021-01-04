@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96206d131578d4b4a935823fb0a9f0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 60
+  radius: 50
   cannonBallStartVelocity: 60
   bombs: 0100000000000000000000000000000001000000
   targets:

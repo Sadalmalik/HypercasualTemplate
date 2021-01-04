@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8259365529555678265}
   - component: {fileID: 8000885525473821097}
   - component: {fileID: 3372339673100285738}
+  - component: {fileID: -399274596421280512}
   m_Layer: 0
   m_Name: Spire.03
   m_TagString: Untagged
@@ -93,3 +94,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 2
+  minDamage: 1
+--- !u!64 &-399274596421280512
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472976127688589539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8378961868709590736, guid: 92e85185aa4c12247977dbdff458d086, type: 3}

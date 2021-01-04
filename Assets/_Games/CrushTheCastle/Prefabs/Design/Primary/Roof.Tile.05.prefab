@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3752141338844658691}
   - component: {fileID: 7986802783231855367}
   - component: {fileID: 4812334462993990827}
+  - component: {fileID: 9038956713299264510}
   m_Layer: 0
   m_Name: Roof.Tile.05
   m_TagString: Untagged
@@ -93,3 +94,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 2
+  minDamage: 1
+--- !u!65 &9038956713299264510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283288668741339089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.143609, z: 0.316547}
+  m_Center: {x: 0, y: -0.07180424, z: -0.05928918}

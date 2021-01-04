@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5939385282823300462}
   - component: {fileID: 3239295857796725472}
   - component: {fileID: 7715622525810110174}
+  - component: {fileID: -7501010907214816431}
   m_Layer: 0
   m_Name: Wooden.Pillar.02
   m_TagString: Untagged
@@ -93,3 +94,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 3
+  minDamage: 1
+--- !u!65 &-7501010907214816431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729461551001075102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6245794, y: 0.62457955, z: 6.063353}
+  m_Center: {x: 0.0000015646219, y: -0.0000015646223, z: 0.002274633}

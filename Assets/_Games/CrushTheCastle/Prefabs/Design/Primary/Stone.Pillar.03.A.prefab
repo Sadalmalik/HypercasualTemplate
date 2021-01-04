@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9119270231087688619}
   - component: {fileID: 4031503802257679071}
   - component: {fileID: 1726541056336778108}
+  - component: {fileID: 951170193927935633}
   m_Layer: 0
   m_Name: Stone.Pillar.03.A
   m_TagString: Untagged
@@ -93,3 +94,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 4
+  minDamage: 1
+--- !u!65 &951170193927935633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032338789873277599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4292073, y: 2.3815675, z: 7.1378336}
+  m_Center: {x: -0.007097006, y: 0.0069096703, z: -2.8307798}

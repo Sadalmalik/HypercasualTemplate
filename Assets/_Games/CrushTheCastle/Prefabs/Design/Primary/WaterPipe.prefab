@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5113772045897466953}
   - component: {fileID: 4959809551013445055}
   - component: {fileID: 5815887415804197026}
+  - component: {fileID: 9060631687368590633}
   m_Layer: 0
   m_Name: WaterPipe
   m_TagString: Untagged
@@ -93,3 +94,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 3
+  minDamage: 1
+--- !u!136 &9060631687368590633
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134938501060024092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3
+  m_Height: 10
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.4}

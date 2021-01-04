@@ -11,7 +11,7 @@ public class GridBuilder : BaseBuilder
 {
 	[Space]
 	[Header("<< Generation >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
-	public Transform[] prefabs;
+	public GameObject[] prefabs;
 	public int xSize;
 	public int ySize;
 	public int zSize;
@@ -36,11 +36,11 @@ public class GridBuilder : BaseBuilder
 			var pos       = xStep * x + yStep * y + zStep * z;
 			var rPosition = RandomUtils.GetRandomIn(randomOffset);
 			var item      = Instantiate(prefabs.ChoiseRandom(), transform);
-			item.localPosition = pos + rPosition;
+			item.transform.localPosition = pos + rPosition;
 
 			var angle = xAngleStep * x + yAngleStep * y + zAngleStep * z;
 			var rRot  = RandomUtils.GetRandomIn(rotationRandomOffset);
-			item.localRotation = Quaternion.Euler(angle + rRot);
+			item.transform.localRotation = Quaternion.Euler(angle + rRot);
 		}
 	}
 }

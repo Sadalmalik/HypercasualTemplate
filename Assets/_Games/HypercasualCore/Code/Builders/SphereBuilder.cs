@@ -10,7 +10,7 @@ public class SphereBuilder : BaseBuilder
 {
 	[Space]
 	[Header("<< Generation >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
-	public Transform[] prefabs;
+	public GameObject[] prefabs;
 	public int count;
 	public float radius;
 	public float aspect;
@@ -39,10 +39,10 @@ public class SphereBuilder : BaseBuilder
 			var pos = new Vector3(ver * Mathf.Cos(vAngle), Mathf.Sin(hAngle), ver * Mathf.Sin(vAngle));
 			pos += RandomUtils.GetRandomIn(randomOffset);
 
-			item.localPosition = radius * pos;
-			item.LookAt(transform.position + center);
+			item.transform.localPosition = radius * pos;
+			item.transform.LookAt(transform.position + center);
 			var rRot = RandomUtils.GetRandomIn(rotationRandomOffset);
-			item.localRotation = item.localRotation * Quaternion.Euler(additionalAngle + rRot);
+			item.transform.localRotation = item.localRotation * Quaternion.Euler(additionalAngle + rRot);
 		}
 	}
 }

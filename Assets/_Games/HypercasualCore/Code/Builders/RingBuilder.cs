@@ -22,7 +22,7 @@ public class RingBuilder : BaseBuilder
 {
 	[Space]
 	[Header("<< Generation >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
-	public Transform[] prefabs;
+	public GameObject[] prefabs;
 	public List<RingSetup> setups = new List<RingSetup>{ new RingSetup() };
 	[Space]
 	[Header("<< Randomize >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
@@ -43,13 +43,13 @@ public class RingBuilder : BaseBuilder
 				var item  = Instantiate(prefabs.ChoiseRandom(), transform);
 				var rAngle = RandomUtils.GetRandomIn(angleRandomOffset);
 				var rPosition = RandomUtils.GetRandomIn(randomOffset);
-				item.localPosition = new Vector3(
+				item.transform.localPosition = new Vector3(
 						setup.radius * Mathf.Cos(Mathf.Deg2Rad * (angle + rAngle)),
 						setup.verticalOffset,
 						setup.radius * Mathf.Sin(Mathf.Deg2Rad * (angle + rAngle))
 					) + rPosition;
 				var rRot = RandomUtils.GetRandomIn(rotationRandomOffset);
-				item.localRotation = Quaternion.Euler(Vector3.down * angle + setup.segmentRotations + rRot);
+				item.transform.localRotation = Quaternion.Euler(Vector3.down * angle + setup.segmentRotations + rRot);
 			}
 		}
 	}

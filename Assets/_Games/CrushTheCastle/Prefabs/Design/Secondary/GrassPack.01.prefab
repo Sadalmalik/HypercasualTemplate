@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &5058209230866343437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &6595201704112747706
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -308,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &4262590646623239575
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -415,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &3920330456638979562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -522,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &4530621423716684110
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -629,6 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &1452677192867290559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -736,6 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &8896794558795198882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -843,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &6368554964458006270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -950,6 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &3905876840563205419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1021,18 +1030,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3b2e0230365874e8867ecf81a82fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  generate: 0
+  loop: 0
+  clear: 0
   prefabs:
-  - {fileID: 875718988306288263, guid: a4b10b7d08a33294bafad7bb6984c270, type: 3}
+  - {fileID: 3416506988740820412, guid: a4b10b7d08a33294bafad7bb6984c270, type: 3}
   count: 15
   radius: 5
   aspect: 4.25
   minHAngle: 45
   maxHAngle: 90
-  randomOffsets: {x: 0, y: 0}
   center: {x: 0, y: -7.29, z: 0}
-  additional: {x: 3.69, y: 0, z: -20.9}
-  generate: 0
-  loop: 0
+  additionalAngle: {x: 0, y: 0, z: 0}
+  randomOffset: {x: 0, y: 0, z: 0}
+  angleRandomOffset: {x: 0, y: 0}
+  rotationRandomOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &8070761372226947722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &7564254558401127073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1234,6 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &6237895667759312341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1341,6 +1355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &1940510982556533115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1448,6 +1463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &9042980889493287411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1555,6 +1571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &3876301683387251466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1662,6 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 1
+  minDamage: 1
 --- !u!65 &5987549291569326493
 BoxCollider:
   m_ObjectHideFlags: 0

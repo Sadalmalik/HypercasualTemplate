@@ -12,6 +12,9 @@ public class GridBuilder : BaseBuilder
 	[Space]
 	[Header("<< Generation >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
 	public GameObject[] prefabs;
+	public Vector3 baseRotation;
+	public bool hullOnly;
+	[Space]
 	public int xSize;
 	public int ySize;
 	public int zSize;
@@ -21,6 +24,7 @@ public class GridBuilder : BaseBuilder
 	public Vector3 xAngleStep;
 	public Vector3 yAngleStep;
 	public Vector3 zAngleStep;
+	
 
 	[Space]
 	[Header("<< Randomize >>--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")]
@@ -33,6 +37,12 @@ public class GridBuilder : BaseBuilder
 		for (int z = 0; z < zSize; z++)
 		for (int x = 0; x < xSize; x++)
 		{
+			if (hullOnly &&
+				x!=0 && x!=xSize-1 &&
+				y!=0 && y!=ySize-1 &&
+				z!=0 && z!=zSize-1)
+				continue;
+			
 			var pos       = xStep * x + yStep * y + zStep * z;
 			var rPosition = RandomUtils.GetRandomIn(randomOffset);
 			var item      = Instantiate(prefabs.ChoiseRandom(), transform);
@@ -40,7 +50,7 @@ public class GridBuilder : BaseBuilder
 
 			var angle = xAngleStep * x + yAngleStep * y + zAngleStep * z;
 			var rRot  = RandomUtils.GetRandomIn(rotationRandomOffset);
-			item.transform.localRotation = Quaternion.Euler(angle + rRot);
+			item.transform.localRotation = Quaternion.Euler(baseRotation + angle + rRot);
 		}
 	}
 }

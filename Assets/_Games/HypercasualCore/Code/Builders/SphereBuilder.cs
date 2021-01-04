@@ -42,7 +42,7 @@ public class SphereBuilder : BaseBuilder
 			item.transform.localPosition = radius * pos;
 			item.transform.LookAt(transform.position + center);
 			var rRot = RandomUtils.GetRandomIn(rotationRandomOffset);
-			item.transform.localRotation = item.localRotation * Quaternion.Euler(additionalAngle + rRot);
+			item.transform.localRotation = item.transform.localRotation * Quaternion.Euler(additionalAngle + rRot);
 		}
 	}
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8646561251845402079}
   - component: {fileID: 4831430765580665670}
   - component: {fileID: 6449819406078309365}
+  - component: {fileID: -4768982128406436451}
   m_Layer: 0
   m_Name: Stone.Plate.02
   m_TagString: Untagged
@@ -93,3 +94,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 6
+  minDamage: 1
+--- !u!64 &-4768982128406436451
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004008045717751363}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5800321022243907898, guid: 92e85185aa4c12247977dbdff458d086, type: 3}

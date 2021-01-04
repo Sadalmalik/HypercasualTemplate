@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6950077444486495211}
   - component: {fileID: 6047979420711073276}
   - component: {fileID: 2641045824096719717}
+  - component: {fileID: -5591831004365663056}
   m_Layer: 0
   m_Name: Wooden.Plank.03
   m_TagString: Untagged
@@ -93,3 +94,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 2
+  minDamage: 1
+--- !u!65 &-5591831004365663056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321801912400518524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.55906284, y: 2.0000005, z: 0.12011147}
+  m_Center: {x: 0.01071988, y: 2.2708424e-18, z: -0.00015979637}

@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoints: 8
+  minDamage: 2
 --- !u!64 &1396244702854840057
 MeshCollider:
   m_ObjectHideFlags: 0

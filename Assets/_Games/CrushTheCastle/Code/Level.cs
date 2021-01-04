@@ -8,23 +8,24 @@ public class Level : MonoBehaviour
 {
 	public float radius;
 	public float cannonBallStartVelocity;
-
+	public int[] bombs;
+	
 	public Destructable[] targets;
 
-	public int count;
+	public int _count;
 	public event Action OnDestruct;
 
 	void Awake()
 	{
-		count = targets.Length;
+		_count = targets.Length;
 		foreach (var target in targets)
 			target.OnDestruct += HandleTargetDestruction;
 	}
 
 	private void HandleTargetDestruction()
 	{
-		count--;
-		if (count <= 0)
+		_count--;
+		if (_count <= 0)
 		{
 			OnDestruct?.Invoke();
 		}

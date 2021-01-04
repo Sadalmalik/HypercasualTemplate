@@ -1250,8 +1250,8 @@ GameObject:
   m_Component:
   - component: {fileID: 693998469}
   - component: {fileID: 693998471}
-  - component: {fileID: 693998470}
   - component: {fileID: 693998472}
+  - component: {fileID: 693998470}
   m_Layer: 0
   m_Name: CrushTheCastle
   m_TagString: Untagged
@@ -1318,6 +1318,7 @@ MonoBehaviour:
   overflow: 1
   levels:
   - {fileID: 7845721341101567959, guid: 28bdf5e3f61af3f4b964cf13191e1ff5, type: 3}
+  - {fileID: 7845721341101567959, guid: 9ad13e11d500c63408676608189eb52e, type: 3}
 --- !u!114 &693998472
 MonoBehaviour:
   m_ObjectHideFlags: 0

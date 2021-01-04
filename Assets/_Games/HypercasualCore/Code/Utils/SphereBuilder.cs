@@ -4,6 +4,7 @@ using UnityEngine;
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberCanBePrivate.Global
 
+[AddComponentMenu( "Builders/Sphere Builder" )]
 [ExecuteInEditMode]
 public class SphereBuilder : MonoBehaviour
 {

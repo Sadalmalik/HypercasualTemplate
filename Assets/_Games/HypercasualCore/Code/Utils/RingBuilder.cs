@@ -3,6 +3,7 @@
 // ReSharper disable UnassignedField.Global
 // ReSharper disable MemberCanBePrivate.Global
 
+[AddComponentMenu( "Builders/Ring Builder" )]
 [ExecuteInEditMode]
 public class RingBuilder : MonoBehaviour
 {

@@ -1251,6 +1251,7 @@ GameObject:
   - component: {fileID: 693998469}
   - component: {fileID: 693998471}
   - component: {fileID: 693998470}
+  - component: {fileID: 693998472}
   m_Layer: 0
   m_Name: CrushTheCastle
   m_TagString: Untagged
@@ -1298,10 +1299,7 @@ MonoBehaviour:
     type: 3}
   explosionPrefab: {fileID: 3187273859005357974, guid: 13f9a09d65494914cbabe69ebf32b90b,
     type: 3}
-  audioSourcePrefab: {fileID: 1842365063980558915, guid: f7f9fcf5fc1352e41adce1704852ce46,
-    type: 3}
-  explosionSounds:
-  - {fileID: 8300000, guid: 24a44074f2fd98c4cafb5cd2c1e80689, type: 3}
+  soundManager: {fileID: 693998472}
   inGameUI: {fileID: 2116059490}
   testRadius: 15
   applyRadius: 0
@@ -1320,6 +1318,22 @@ MonoBehaviour:
   overflow: 1
   levels:
   - {fileID: 7845721341101567959, guid: 28bdf5e3f61af3f4b964cf13191e1ff5, type: 3}
+--- !u!114 &693998472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693998468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23958b3a3279ad94bb2eed200be674c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcePrefab: {fileID: 1842365063980558915, guid: f7f9fcf5fc1352e41adce1704852ce46,
+    type: 3}
+  explosionSounds:
+  - {fileID: 8300000, guid: 24a44074f2fd98c4cafb5cd2c1e80689, type: 3}
 --- !u!1 &709041856
 GameObject:
   m_ObjectHideFlags: 0

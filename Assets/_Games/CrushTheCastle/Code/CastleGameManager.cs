@@ -25,11 +25,9 @@ public class CastleGameManager : IGameManager
 	public Bomb regularBombPrefab;
 	public Bomb powerBombPrefab;
 	public ExplosionController explosionPrefab;
-	[Space]
-	public AudioSource audioSourcePrefab;
-	public AudioClip[] explosionSounds;
 	
 	[Space]
+	public SoundManager soundManager;
 	public GameObject inGameUI;
 
 	[Space(40)]
@@ -39,7 +37,6 @@ public class CastleGameManager : IGameManager
 	private ObjectsPool<Bomb> regularBombs;
 	private ObjectsPool<Bomb> powerBombs;
 	private ObjectsPool<ExplosionController> explosions;
-	private ObjectsPool<AudioSource> audioSources;
 	
 	void FixedUpdate()
 	{
@@ -59,21 +56,6 @@ public class CastleGameManager : IGameManager
 
 #region GameManager Api
 
-	public void PlayAudio(Vector3 position, AudioClip clip)
-	{
-		StartCoroutine(PlayAudioCoroutine(position, clip));
-	}
-	
-	private IEnumerator PlayAudioCoroutine(Vector3 position, AudioClip clip)
-	{
-		var source = audioSources.Lock();
-		source.transform.position = position;
-		source.clip = clip;
-		source.Play();
-		yield return new WaitForSeconds(clip.length);
-		audioSources.Free(source);
-	}
-
 	public override void Init()
 	{
 		Debug.Log("[TEST] GameManager.Init()");
@@ -81,11 +63,6 @@ public class CastleGameManager : IGameManager
 
 		touchWidget.OnStartControl += HandleStartControl;
 		touchWidget.OnEndControl   += HandleEndControl;
-		
-		audioSources = new ObjectsPool<AudioSource>(
-			()=>Instantiate(audioSourcePrefab),
-			source=>source.gameObject.SetActive(true),
-			source=>source.gameObject.SetActive(false));
 		
 		explosions = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
@@ -102,7 +79,7 @@ public class CastleGameManager : IGameManager
 				var pos = bomb.transform.position;
 				var explosion = explosions.Lock();
 				explosion.Explode(pos);
-				PlayAudio(pos, RandomUtils.Choice(explosionSounds));
+				soundManager.PlayExplosion(pos);
 				regularBombs.Free(bomb);
 			};
 			return bomb;
@@ -116,7 +93,7 @@ public class CastleGameManager : IGameManager
 				var pos = bomb.transform.position;
 				var explosion = explosions.Lock();
 				explosion.Explode(pos);
-				PlayAudio(pos, RandomUtils.Choice(explosionSounds));
+				soundManager.PlayExplosion(pos);
 				powerBombs.Free(bomb);
 			};
 			return bomb;

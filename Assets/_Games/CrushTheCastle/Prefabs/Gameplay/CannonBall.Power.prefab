@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 428905833890699722}
   - component: {fileID: 5649601319586170766}
   - component: {fileID: 4276083616692160077}
+  - component: {fileID: 17066710862633903}
   - component: {fileID: 4579098353627555513}
   m_Layer: 0
   m_Name: CannonBall.Power
@@ -271,6 +272,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &17066710862633903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708010894515736070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d2b9247bea5e546b53f4bf2d6a4f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damages:
+  - tag: Hard Damage
+    radius: 4
+    hitPower: 3
+  - tag: Soft Damage
+    radius: 7
+    hitPower: 1
 --- !u!114 &4579098353627555513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,11 +304,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4276083616692160077}
+  explosive: {fileID: 17066710862633903}
   lifetimeLimit: 3.5
-  damages:
-  - tag: Hard Damage
-    radius: 4
-    hitPower: 3
-  - tag: SoftDamage
-    radius: 7
-    hitPower: 1

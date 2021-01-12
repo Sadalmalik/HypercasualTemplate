@@ -74,7 +74,7 @@ public class CastleGameManager : IGameManager
 		regularBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(regularBombPrefab);
-			bomb.OnExplode += () =>
+			bomb.explosive.OnExplode += () =>
 			{
 				var pos = bomb.transform.position;
 				var explosion = explosions.Lock();
@@ -88,7 +88,7 @@ public class CastleGameManager : IGameManager
 		powerBombs = ObjectsPoolUtils.CreateBehavioursPool(()=>
 		{
 			var bomb = Instantiate(powerBombPrefab);
-			bomb.OnExplode += () =>
+			bomb.explosive.OnExplode += () =>
 			{
 				var pos = bomb.transform.position;
 				var explosion = explosions.Lock();
@@ -135,6 +135,18 @@ public class CastleGameManager : IGameManager
 			transform);
 		_currentLevel.OnDestruct += HandleLevelSuccess;
 		_currentLevel.DOMove(Vector3.zero, levelChangeDuration);
+
+		foreach (var barrel in _currentLevel.barrels)
+		{
+			barrel.explosive.OnExplode += () =>
+			{
+				var pos = barrel.transform.position;
+				var explosion = explosions.Lock();
+				explosion.Explode(pos);
+				soundManager.PlayExplosion(pos);
+			};
+		}
+		
 		player.SetShootVelocity(_currentLevel.cannonBallStartVelocity);
 		
 		player.DORadius(prefab.radius, levelChangeDuration);

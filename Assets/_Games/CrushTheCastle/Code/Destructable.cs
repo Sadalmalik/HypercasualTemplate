@@ -6,6 +6,7 @@ public class Destructable : MonoBehaviour
 {
 	public int HitPoints = 1;
 	public int minDamage = 1;
+	public bool destroy = true;
 	
 	public event Action OnDestruct;
 	
@@ -17,7 +18,8 @@ public class Destructable : MonoBehaviour
 		if (HitPoints <= 0)
 		{
 			OnDestruct?.Invoke();
-			Destroy(gameObject, 0);
+			if (destroy)
+				Destroy(gameObject, 0);
 		}
 	}
 }

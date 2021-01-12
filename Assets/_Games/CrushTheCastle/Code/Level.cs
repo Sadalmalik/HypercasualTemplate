@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class Level : MonoBehaviour
 	public float cannonBallStartVelocity;
 	public int[] bombs;
 	
+	public Barrel[] barrels;
 	public Destructable[] targets;
 
 	public int _count;

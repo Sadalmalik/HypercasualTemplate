@@ -136,7 +136,8 @@ public class CastleGameManager : IGameManager
 		_currentLevel.OnDestruct += HandleLevelSuccess;
 		_currentLevel.DOMove(Vector3.zero, levelChangeDuration);
 
-		foreach (var barrel in _currentLevel.barrels)
+		var barrels = _currentLevel.GetComponentsInChildren<Barrel>(true);
+		foreach (var barrel in barrels)
 		{
 			barrel.explosive.OnExplode += () =>
 			{
